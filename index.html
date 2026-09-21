@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>金錢複習</title>
+<title>用錢總複習</title>
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   body {
@@ -104,6 +104,16 @@
     color: white;
     cursor: pointer;
   }
+  .dbl-note {
+    align-self: center;
+    font-size: 12px;
+    color: #A87A2C;
+    background: rgba(255,255,255,0.85);
+    padding: 3px 8px;
+    border-radius: 8px;
+    margin-right: 4px;
+    pointer-events: none;
+  }
   .hint {
     text-align: center;
     font-size: 13px;
@@ -113,7 +123,7 @@
 </style>
 </head>
 <body>
-<h1>柏瑜老師的錢包</h1>
+<h1>用錢總複習</h1>
 
 
 
@@ -147,6 +157,7 @@
     <canvas id="draw-canvas" style="position:absolute; inset:0; z-index:500; pointer-events:none;"></canvas>
   </div>
   <div class="history-btns">
+    <span class="dbl-note">雙擊兩下可以刪除錢幣</span>
     <button class="history-btn" id="undo-btn">↩</button>
     <button class="history-btn" id="redo-btn">↪</button>
   </div>
@@ -344,7 +355,7 @@
       try { el.setPointerCapture(e.pointerId); } catch(err){}
 
       const now = Date.now();
-      if(now - lastTap < 350){
+      if(now - lastTap < 600){
         board.removeChild(el);
         coins = coins.filter(c => c.el !== el);
         updateTotal();
